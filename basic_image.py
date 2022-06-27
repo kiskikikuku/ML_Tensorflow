@@ -61,7 +61,7 @@ def plot_value_array(i, prediction_array, true_label):
     plt.ylim([0, 1])
     predicted_label = np.argmax(prediction_array)
 
-
+"""
 i=0
 plt.figure(figsize=(6,3))
 plt.subplot(1,2,1)
@@ -89,3 +89,18 @@ for i in range(num_images):
     plot_value_array(i, prediction[i], test_labels)
 plt.tight_layout()
 plt.show()                                               #5x3개 원소의 이미지, 예측, 신뢰도 점수 배열
+"""
+img = test_images[1]
+print(img.shape)
+
+img = (np.expand_dims(img,0))
+print(img.shape)
+
+prediction_single = probability_model.predict(img)
+print(prediction_single)
+
+plot_value_array(1, prediction_single[0], test_labels)
+_ = plt.xticks(range(10), class_names, rotation=45)
+plt.show()
+
+np.argmax(prediction_single[0])
